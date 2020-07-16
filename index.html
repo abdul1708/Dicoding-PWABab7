@@ -20,6 +20,7 @@
   <button onclick="showNotifikasiRenotify()">Notifikasi dengan Renotify </button>
 
   <button onclick="showNotifikasiSilent()">Notifikasi dengan Silent </button>
+<button onclick="showNotifikasiGambar()">Notifikasi dengan Gambar</button>
 
 
   <script type="text/javascript">
@@ -188,6 +189,21 @@
             console.error('Fitur notifikasi tidak diijinkan.');
           }
         }
+
+        function showNotifikasiGambar() {
+            const title = 'Notifikasi dengan Gambar';
+            const options = {
+              'body': 'Ini adalah konten notifikasi dengan gambar latar.',
+              'image': '/img/pexels-photo-270366.jpg'
+            };
+            if (Notification.permission === 'granted') {
+              navigator.serviceWorker.ready.then(function (registration) {
+                registration.showNotification(title, options);
+              });
+            } else {
+              console.error('Fitur notifikasi tidak diijinkan.');
+            }
+          }
   </script>
 </body>
 
